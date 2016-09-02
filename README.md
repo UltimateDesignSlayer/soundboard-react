@@ -1,2 +1,2 @@
-# soundboard-react
-Soundboard in ReactJS
+# React Soundboard
+Soundboard written using ReactJS.
