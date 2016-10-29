@@ -9,6 +9,8 @@ const appContainer = document.getElementById('appContainer');
 
 class App extends React.Component {
   constructor() {
+    super();
+
     this.state = {
       appState: 'default'
     }

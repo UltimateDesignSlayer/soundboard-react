@@ -12,21 +12,16 @@ class MainMenu extends React.Component {
       {name: 'abc'},
       {name: '123'}
     ];
-
-    
-  }
-
-  menuSelector(appState) {
-
   }
 
   render() {
+    var that = this;
 
     return (
-      <ul className='main-menu'>
+      <ul className='main-menu {(appState)}'>
         {
           this.menuData.map(function(val, i) {
-            return <MenuItem menuItemName={val.name} key={i} />
+            return <MenuItem menuSelectHandler={that.props.menuStatusChanger} menuItemName={val.name} key={i} />
           })
         }
       </ul>

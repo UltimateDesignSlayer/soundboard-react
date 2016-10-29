@@ -7,7 +7,7 @@ class Header extends React.Component {
 
   changeTheme(e) {
     console.log(e);
-    this.props.changeTheme('theme-red');
+    this.props.changeTheme('theme-super-why');
     this.props.changeHeaderText('super why');
   }
 
@@ -15,8 +15,7 @@ class Header extends React.Component {
     return (
       <header>
         <h1>{this.props.headerText}</h1>
-
-        <button onClick={this.changeTheme.bind(this)} />
+        <button onClick={this.changeTheme.bind(this)}>Super why</button>
       </header>
     );
   }

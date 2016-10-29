@@ -1,26 +1,35 @@
 import React from 'react';
 
 import {MainMenu} from './menu/mainMenu';
+import {Soundboard} from './soundboard/soundboard';
 
 class Body extends React.Component {
   constructor() {
     super();
 
     this.state = {
-      display: true
+      displayMenu: true
     };
   }
 
   changeMenuState(status) {
+    console.log('in body',status);
     this.setState({
-      display: status
+      displayMenu: status
     });
   }
 
   render() {
+    var menuRender;
+    console.log('display menu',this.displayMenu);
+    if (this.state.displayMenu) {
+      menuRender = <MainMenu menuStatusChanger={this.changeMenuState} />;
+    }
+
     return (
       <div className='main'>
-        <MainMenu display={this.state.display} menuStatusChanger={this.changeMenuState.bind(this)} />
+        {menuRender}
+        <Soundboard />
       </div>
     );
   }

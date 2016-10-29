@@ -74,13 +74,25 @@
 	  function App() {
 	    _classCallCheck(this, App);
 
-	    return _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).apply(this, arguments));
+	    var _this = _possibleConstructorReturn(this, (App.__proto__ || Object.getPrototypeOf(App)).call(this));
+
+	    _this.state = {
+	      appState: 'default'
+	    };
+	    return _this;
 	  }
 
 	  _createClass(App, [{
+	    key: 'changeAppState',
+	    value: function changeAppState(appState) {
+	      this.setState({
+	        appState: appState
+	      });
+	    }
+	  }, {
 	    key: 'render',
 	    value: function render() {
-	      return _react2.default.createElement(_layout.Layout, { appState: 'default', headerText: 'Soundboard Meow', footerText: 'Woof!' });
+	      return _react2.default.createElement(_layout.Layout, { changeAppState: this.changeAppState.bind(this), appState: this.state.appState, headerText: 'Soundboard Meow', footerText: 'Woof!' });
 	    }
 	  }]);
 
@@ -21479,9 +21491,9 @@
 
 	var _body = __webpack_require__(173);
 
-	var _footer = __webpack_require__(175);
+	var _footer = __webpack_require__(177);
 
-	var _header = __webpack_require__(176);
+	var _header = __webpack_require__(178);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21504,7 +21516,6 @@
 	    // This is how we set initial state in this ES6 class model.
 	    // Replaces using getInitialState().g
 	    _this.state = {
-	      appState: _this.props.appState,
 	      headerText: _this.props.headerText,
 	      themeClass: 'theme-' + _this.props.appState
 	    };
@@ -21562,6 +21573,8 @@
 
 	var _mainMenu = __webpack_require__(174);
 
+	var _soundboard = __webpack_require__(176);
+
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
 	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
@@ -21579,7 +21592,7 @@
 	    var _this = _possibleConstructorReturn(this, (Body.__proto__ || Object.getPrototypeOf(Body)).call(this));
 
 	    _this.state = {
-	      display: true
+	      displayMenu: true
 	    };
 	    return _this;
 	  }
@@ -21587,17 +21600,25 @@
 	  _createClass(Body, [{
 	    key: 'changeMenuState',
 	    value: function changeMenuState(status) {
+	      console.log('in body', status);
 	      this.setState({
-	        display: status
+	        displayMenu: status
 	      });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var menuRender;
+	      console.log('display menu', this.displayMenu);
+	      if (this.state.displayMenu) {
+	        menuRender = _react2.default.createElement(_mainMenu.MainMenu, { menuStatusChanger: this.changeMenuState });
+	      }
+
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'main' },
-	        _react2.default.createElement(_mainMenu.MainMenu, { display: this.state.display, menuStatusChanger: this.changeMenuState.bind(this) })
+	        menuRender,
+	        _react2.default.createElement(_soundboard.Soundboard, null)
 	      );
 	    }
 	  }]);
@@ -21624,7 +21645,7 @@
 
 	var _react2 = _interopRequireDefault(_react);
 
-	var _menuItem = __webpack_require__(177);
+	var _menuItem = __webpack_require__(175);
 
 	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
 
@@ -21644,22 +21665,19 @@
 	    var _this = _possibleConstructorReturn(this, (MainMenu.__proto__ || Object.getPrototypeOf(MainMenu)).call(this, props));
 
 	    _this.menuData = [{ name: 'test' }, { name: 'abc' }, { name: '123' }];
-
 	    return _this;
 	  }
 
 	  _createClass(MainMenu, [{
-	    key: 'menuSelector',
-	    value: function menuSelector(appState) {}
-	  }, {
 	    key: 'render',
 	    value: function render() {
+	      var that = this;
 
 	      return _react2.default.createElement(
 	        'ul',
-	        { className: 'main-menu' },
+	        { className: 'main-menu {(appState)}' },
 	        this.menuData.map(function (val, i) {
-	          return _react2.default.createElement(_menuItem.MenuItem, { menuItemName: val.name, key: i });
+	          return _react2.default.createElement(_menuItem.MenuItem, { menuSelectHandler: that.props.menuStatusChanger, menuItemName: val.name, key: i });
 	        })
 	      );
 	    }
@@ -21672,6 +21690,176 @@
 
 /***/ },
 /* 175 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.MenuItem = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var MenuItem = function (_React$Component) {
+	  _inherits(MenuItem, _React$Component);
+
+	  function MenuItem() {
+	    _classCallCheck(this, MenuItem);
+
+	    return _possibleConstructorReturn(this, (MenuItem.__proto__ || Object.getPrototypeOf(MenuItem)).call(this));
+	  }
+
+	  _createClass(MenuItem, [{
+	    key: 'menuItemSelect',
+	    value: function menuItemSelect(e) {
+	      console.log(e);
+	      this.props.menuSelectHandler('OI!!!');
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      return _react2.default.createElement(
+	        'li',
+	        { onClick: this.menuItemSelect.bind(this) },
+	        this.props.menuItemName
+	      );
+	    }
+	  }]);
+
+	  return MenuItem;
+	}(_react2.default.Component);
+
+	exports.MenuItem = MenuItem;
+
+/***/ },
+/* 176 */
+/***/ function(module, exports, __webpack_require__) {
+
+	'use strict';
+
+	Object.defineProperty(exports, "__esModule", {
+	  value: true
+	});
+	exports.Soundboard = undefined;
+
+	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
+
+	var _react = __webpack_require__(1);
+
+	var _react2 = _interopRequireDefault(_react);
+
+	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
+
+	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
+
+	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
+
+	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
+
+	var Soundboard = function (_React$Component) {
+	  _inherits(Soundboard, _React$Component);
+
+	  function Soundboard() {
+	    _classCallCheck(this, Soundboard);
+
+	    // The data below will ideally be set up with a global state.
+	    // For example the Alphabet sound board will have data to specify the file path to the audio file
+	    // and the data of segments to play. (e.g. 'A' sound clip is between 0:01 and 0:04, 'B' is between
+	    // 0:05 and 0:08 etc.).
+
+	    var _this = _possibleConstructorReturn(this, (Soundboard.__proto__ || Object.getPrototypeOf(Soundboard)).call(this));
+
+	    _this.soundClipsArr = [{ name: 'A', startTime: 0, endTime: 0.9 }, { name: 'B', startTime: 1, endTime: 1.9 }, { name: 'C', startTime: 2, endTime: 3 }, { name: 'D', startTime: 3.1, endTime: 4 }];
+
+	    _this.filePath = 'http://morahman.co.uk/audio/abc.mp3';
+	    return _this;
+	  }
+
+	  _createClass(Soundboard, [{
+	    key: 'componentDidMount',
+	    value: function componentDidMount() {
+	      var that = this;
+	      this.audioElem = document.getElementById('soundboardFile');
+
+	      console.log(this.audioElem.src);
+
+	      this.audioElem.addEventListener('timeupdate', function () {
+	        console.log('played', this.currentTime);
+	        console.log('end time', that.audioSpriteEnd);
+	        if (this.currentTime >= that.audioSpriteEnd) {
+	          this.pause();
+	        }
+	      });
+	      console.log(this.audioElem.src);
+	    }
+	  }, {
+	    key: 'getSoundboardAudio',
+	    value: function getSoundboardAudio(filepath) {}
+	  }, {
+	    key: 'audioTimeUpdateHandler',
+	    value: function audioTimeUpdateHandler() {}
+	  }, {
+	    key: 'bindEvents',
+	    value: function bindEvents() {}
+	  }, {
+	    key: 'playSegment',
+	    value: function playSegment(startTime, endTime) {
+	      this.audioSpriteEnd = endTime;
+	      this.audioElem.currentTime = startTime;
+	      this.audioElem.play();
+	    }
+	  }, {
+	    key: 'render',
+	    value: function render() {
+	      var that = this;
+
+	      //:::WARNING:::
+	      // Every time we hit play, the virtual DOM is reloading so the audio tag is rewritten. This would explain why every time
+	      // I click play, the abc.wav file is loaded in again by the browser.
+
+	      return _react2.default.createElement(
+	        'div',
+	        { className: 'soundboard-container' },
+	        _react2.default.createElement('audio', { id: 'soundboardFile', src: 'http://morahman.co.uk/audio/abc.mp3', type: 'audio/mp3' }),
+	        _react2.default.createElement(
+	          'ul',
+	          null,
+	          this.soundClipsArr.map(function (soundClip, i) {
+	            return _react2.default.createElement(
+	              'li',
+	              { key: i },
+	              _react2.default.createElement(
+	                'a',
+	                { onClick: that.playSegment.bind(that, soundClip.startTime, soundClip.endTime) },
+	                soundClip.name
+	              )
+	            );
+	          })
+	        )
+	      );
+	    }
+	  }]);
+
+	  return Soundboard;
+	}(_react2.default.Component);
+
+	exports.Soundboard = Soundboard;
+
+/***/ },
+/* 177 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21717,7 +21905,7 @@
 	exports.Footer = Footer;
 
 /***/ },
-/* 176 */
+/* 178 */
 /***/ function(module, exports, __webpack_require__) {
 
 	'use strict';
@@ -21754,7 +21942,7 @@
 	    key: 'changeTheme',
 	    value: function changeTheme(e) {
 	      console.log(e);
-	      this.props.changeTheme('theme-red');
+	      this.props.changeTheme('theme-super-why');
 	      this.props.changeHeaderText('super why');
 	    }
 	  }, {
@@ -21768,7 +21956,11 @@
 	          null,
 	          this.props.headerText
 	        ),
-	        _react2.default.createElement('button', { onClick: this.changeTheme.bind(this) })
+	        _react2.default.createElement(
+	          'button',
+	          { onClick: this.changeTheme.bind(this) },
+	          'Super why'
+	        )
 	      );
 	    }
 	  }]);
@@ -21777,56 +21969,6 @@
 	}(_react2.default.Component);
 
 	exports.Header = Header;
-
-/***/ },
-/* 177 */
-/***/ function(module, exports, __webpack_require__) {
-
-	'use strict';
-
-	Object.defineProperty(exports, "__esModule", {
-	  value: true
-	});
-	exports.MenuItem = undefined;
-
-	var _createClass = function () { function defineProperties(target, props) { for (var i = 0; i < props.length; i++) { var descriptor = props[i]; descriptor.enumerable = descriptor.enumerable || false; descriptor.configurable = true; if ("value" in descriptor) descriptor.writable = true; Object.defineProperty(target, descriptor.key, descriptor); } } return function (Constructor, protoProps, staticProps) { if (protoProps) defineProperties(Constructor.prototype, protoProps); if (staticProps) defineProperties(Constructor, staticProps); return Constructor; }; }();
-
-	var _react = __webpack_require__(1);
-
-	var _react2 = _interopRequireDefault(_react);
-
-	function _interopRequireDefault(obj) { return obj && obj.__esModule ? obj : { default: obj }; }
-
-	function _classCallCheck(instance, Constructor) { if (!(instance instanceof Constructor)) { throw new TypeError("Cannot call a class as a function"); } }
-
-	function _possibleConstructorReturn(self, call) { if (!self) { throw new ReferenceError("this hasn't been initialised - super() hasn't been called"); } return call && (typeof call === "object" || typeof call === "function") ? call : self; }
-
-	function _inherits(subClass, superClass) { if (typeof superClass !== "function" && superClass !== null) { throw new TypeError("Super expression must either be null or a function, not " + typeof superClass); } subClass.prototype = Object.create(superClass && superClass.prototype, { constructor: { value: subClass, enumerable: false, writable: true, configurable: true } }); if (superClass) Object.setPrototypeOf ? Object.setPrototypeOf(subClass, superClass) : subClass.__proto__ = superClass; }
-
-	var MenuItem = function (_React$Component) {
-	  _inherits(MenuItem, _React$Component);
-
-	  function MenuItem() {
-	    _classCallCheck(this, MenuItem);
-
-	    return _possibleConstructorReturn(this, (MenuItem.__proto__ || Object.getPrototypeOf(MenuItem)).call(this));
-	  }
-
-	  _createClass(MenuItem, [{
-	    key: 'render',
-	    value: function render() {
-	      return _react2.default.createElement(
-	        'li',
-	        null,
-	        this.props.menuItemName
-	      );
-	    }
-	  }]);
-
-	  return MenuItem;
-	}(_react2.default.Component);
-
-	exports.MenuItem = MenuItem;
 
 /***/ }
 /******/ ]);

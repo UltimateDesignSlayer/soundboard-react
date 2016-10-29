@@ -5,9 +5,16 @@ class MenuItem extends React.Component {
     super();
   }
 
+  menuItemSelect(e) {
+    console.log(e);
+    this.props.menuSelectHandler('OI!!!');
+  }
+
   render() {
     return(
-      <li>{this.props.menuItemName}</li>
+      <li onClick={ this.menuItemSelect.bind(this) }>
+        { this.props.menuItemName }
+      </li>
     );
   }
 }
