@@ -10,12 +10,17 @@ class Body extends React.Component {
     this.state = {
       displayStatus: 'mainMenu'
     };
+
+    this.changeAppState = this.changeAppState.bind(this);
   }
 
   changeAppState(status) {
+    console.log(status);
     this.setState({
       displayStatus: status
     });
+    // () => console.log(this.state.displayStatus);
+
   }
 
   render() {

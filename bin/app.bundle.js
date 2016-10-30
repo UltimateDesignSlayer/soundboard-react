@@ -21594,15 +21594,19 @@
 	    _this.state = {
 	      displayStatus: 'mainMenu'
 	    };
+
+	    _this.changeAppState = _this.changeAppState.bind(_this);
 	    return _this;
 	  }
 
 	  _createClass(Body, [{
 	    key: 'changeAppState',
 	    value: function changeAppState(status) {
+	      console.log(status);
 	      this.setState({
 	        displayStatus: status
 	      });
+	      // () => console.log(this.state.displayStatus);
 	    }
 	  }, {
 	    key: 'render',
@@ -21725,7 +21729,6 @@
 	  _createClass(MenuItem, [{
 	    key: 'menuItemSelect',
 	    value: function menuItemSelect(e) {
-	      console.log(e);
 	      this.props.menuSelectHandler('soundboard');
 	    }
 	  }, {
@@ -21782,7 +21785,7 @@
 
 	    var _this = _possibleConstructorReturn(this, (Soundboard.__proto__ || Object.getPrototypeOf(Soundboard)).call(this));
 
-	    _this.soundClipsArr = [{ name: 'A', startTime: 0, endTime: 0.9 }, { name: 'B', startTime: 1, endTime: 1.9 }, { name: 'C', startTime: 2, endTime: 3 }, { name: 'D', startTime: 3.1, endTime: 4 }, { name: 'E', startTime: 4.1, endTime: 5.1 }, { name: 'F', startTime: 5.2, endTime: 6.2 }, { name: 'G', startTime: 6.35, endTime: 7.2 }, { name: 'H', startTime: 7.3, endTime: 8.225 }, { name: 'I', startTime: 8.5, endTime: 9.3 }, { name: 'J', startTime: 9.4, endTime: 10.4 }, { name: 'K', startTime: 10.6, endTime: 11.4 }, { name: 'L', startTime: 11.8, endTime: 12.7 }, { name: 'M', startTime: 12.9, endTime: 13.9 }, { name: 'N', startTime: 14.2, endTime: 15.1 }, { name: 'O', startTime: 15.2, endTime: 16.2 }, { name: 'P', startTime: 16.4, endTime: 17.5 }, { name: 'Q', startTime: 17.7, endTime: 18.7 }, { name: 'R', startTime: 18.9, endTime: 20 }, { name: 'S', startTime: 20.2, endTime: 21.1 }, { name: 'T', startTime: 21.3, endTime: 22.3 }, { name: 'U', startTime: 10.6, endTime: 11.4 }, { name: 'V', startTime: 10.6, endTime: 11.4 }, { name: 'W', startTime: 10.6, endTime: 11.4 }, { name: 'X', startTime: 10.6, endTime: 11.4 }, { name: 'Y', startTime: 10.6, endTime: 11.4 }, { name: 'Z', startTime: 10.6, endTime: 11.4 }];
+	    _this.soundClipsArr = [{ name: 'A', startTime: 0, endTime: 0.9 }, { name: 'B', startTime: 1, endTime: 1.9 }, { name: 'C', startTime: 2, endTime: 3 }, { name: 'D', startTime: 3.1, endTime: 4 }, { name: 'E', startTime: 4.1, endTime: 5.1 }, { name: 'F', startTime: 5.2, endTime: 6.2 }, { name: 'G', startTime: 6.35, endTime: 7.2 }, { name: 'H', startTime: 7.3, endTime: 8.225 }, { name: 'I', startTime: 8.5, endTime: 9.3 }, { name: 'J', startTime: 9.4, endTime: 10.4 }, { name: 'K', startTime: 10.6, endTime: 11.4 }, { name: 'L', startTime: 11.8, endTime: 12.7 }, { name: 'M', startTime: 12.9, endTime: 13.9 }, { name: 'N', startTime: 14.2, endTime: 15.1 }, { name: 'O', startTime: 15.2, endTime: 16.2 }, { name: 'P', startTime: 16.4, endTime: 17.5 }, { name: 'Q', startTime: 17.7, endTime: 18.7 }, { name: 'R', startTime: 18.9, endTime: 20 }, { name: 'S', startTime: 20.2, endTime: 21.1 }, { name: 'T', startTime: 21.3, endTime: 22.3 }, { name: 'U', startTime: 22.55, endTime: 23.4 }, { name: 'V', startTime: 23.4, endTime: 11.4 }, { name: 'W', startTime: 10.6, endTime: 11.4 }, { name: 'X', startTime: 10.6, endTime: 11.4 }, { name: 'Y', startTime: 10.6, endTime: 11.4 }, { name: 'Z', startTime: 10.6, endTime: 11.4 }];
 
 	    _this.filePath = 'http://morahman.co.uk/audio/abc.mp3';
 	    return _this;
@@ -21848,6 +21851,11 @@
 	              )
 	            );
 	          })
+	        ),
+	        _react2.default.createElement(
+	          'a',
+	          { className: 'btn btn-default' },
+	          _react2.default.createElement('span', { className: 'glyphicon glyphicon-chevron-left' })
 	        )
 	      );
 	    }

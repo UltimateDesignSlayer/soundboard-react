@@ -30,8 +30,8 @@ class Soundboard extends React.Component {
       {name: 'R', startTime: 18.9, endTime: 20},
       {name: 'S', startTime: 20.2, endTime: 21.1},
       {name: 'T', startTime: 21.3, endTime: 22.3},
-      {name: 'U', startTime: 10.6, endTime: 11.4},
-      {name: 'V', startTime: 10.6, endTime: 11.4},
+      {name: 'U', startTime: 22.55, endTime: 23.4},
+      {name: 'V', startTime: 23.4, endTime: 11.4},
       {name: 'W', startTime: 10.6, endTime: 11.4},
       {name: 'X', startTime: 10.6, endTime: 11.4},
       {name: 'Y', startTime: 10.6, endTime: 11.4},
@@ -93,6 +93,10 @@ class Soundboard extends React.Component {
           })
         }
         </div>
+
+        <a className="btn btn-default">
+          <span className="glyphicon glyphicon-chevron-left"></span>
+        </a>
       </div>
     );
   }
