@@ -21592,33 +21592,33 @@
 	    var _this = _possibleConstructorReturn(this, (Body.__proto__ || Object.getPrototypeOf(Body)).call(this));
 
 	    _this.state = {
-	      displayMenu: true
+	      displayStatus: 'mainMenu'
 	    };
 	    return _this;
 	  }
 
 	  _createClass(Body, [{
-	    key: 'changeMenuState',
-	    value: function changeMenuState(status) {
-	      console.log('in body', status);
+	    key: 'changeAppState',
+	    value: function changeAppState(status) {
 	      this.setState({
-	        displayMenu: status
+	        displayStatus: status
 	      });
 	    }
 	  }, {
 	    key: 'render',
 	    value: function render() {
-	      var menuRender;
+	      var appStateRender;
 	      console.log('display menu', this.displayMenu);
-	      if (this.state.displayMenu) {
-	        menuRender = _react2.default.createElement(_mainMenu.MainMenu, { menuStatusChanger: this.changeMenuState });
+	      if (this.state.displayStatus === 'mainMenu') {
+	        appStateRender = _react2.default.createElement(_mainMenu.MainMenu, { appStatusChanger: this.changeAppState });
+	      } else {
+	        appStateRender = _react2.default.createElement(_soundboard.Soundboard, null);
 	      }
 
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'main' },
-	        menuRender,
-	        _react2.default.createElement(_soundboard.Soundboard, null)
+	        appStateRender
 	      );
 	    }
 	  }]);
@@ -21677,7 +21677,7 @@
 	        'ul',
 	        { className: 'main-menu {(appState)}' },
 	        this.menuData.map(function (val, i) {
-	          return _react2.default.createElement(_menuItem.MenuItem, { menuSelectHandler: that.props.menuStatusChanger, menuItemName: val.name, key: i });
+	          return _react2.default.createElement(_menuItem.MenuItem, { menuSelectHandler: that.props.appStatusChanger, menuItemName: val.name, key: i });
 	        })
 	      );
 	    }
@@ -21726,7 +21726,7 @@
 	    key: 'menuItemSelect',
 	    value: function menuItemSelect(e) {
 	      console.log(e);
-	      this.props.menuSelectHandler('OI!!!');
+	      this.props.menuSelectHandler('soundboard');
 	    }
 	  }, {
 	    key: 'render',
@@ -21782,7 +21782,7 @@
 
 	    var _this = _possibleConstructorReturn(this, (Soundboard.__proto__ || Object.getPrototypeOf(Soundboard)).call(this));
 
-	    _this.soundClipsArr = [{ name: 'A', startTime: 0, endTime: 0.9 }, { name: 'B', startTime: 1, endTime: 1.9 }, { name: 'C', startTime: 2, endTime: 3 }, { name: 'D', startTime: 3.1, endTime: 4 }];
+	    _this.soundClipsArr = [{ name: 'A', startTime: 0, endTime: 0.9 }, { name: 'B', startTime: 1, endTime: 1.9 }, { name: 'C', startTime: 2, endTime: 3 }, { name: 'D', startTime: 3.1, endTime: 4 }, { name: 'E', startTime: 4.1, endTime: 5.1 }, { name: 'F', startTime: 5.2, endTime: 6.2 }, { name: 'G', startTime: 6.35, endTime: 7.2 }, { name: 'H', startTime: 7.3, endTime: 8.225 }, { name: 'I', startTime: 8.5, endTime: 9.3 }, { name: 'J', startTime: 9.4, endTime: 10.4 }, { name: 'K', startTime: 10.6, endTime: 11.4 }, { name: 'L', startTime: 11.8, endTime: 12.7 }, { name: 'M', startTime: 12.9, endTime: 13.9 }, { name: 'N', startTime: 14.2, endTime: 15.1 }, { name: 'O', startTime: 15.2, endTime: 16.2 }, { name: 'P', startTime: 16.4, endTime: 17.5 }, { name: 'Q', startTime: 17.7, endTime: 18.7 }, { name: 'R', startTime: 18.9, endTime: 20 }, { name: 'S', startTime: 20.2, endTime: 21.1 }, { name: 'T', startTime: 21.3, endTime: 22.3 }, { name: 'U', startTime: 10.6, endTime: 11.4 }, { name: 'V', startTime: 10.6, endTime: 11.4 }, { name: 'W', startTime: 10.6, endTime: 11.4 }, { name: 'X', startTime: 10.6, endTime: 11.4 }, { name: 'Y', startTime: 10.6, endTime: 11.4 }, { name: 'Z', startTime: 10.6, endTime: 11.4 }];
 
 	    _this.filePath = 'http://morahman.co.uk/audio/abc.mp3';
 	    return _this;
@@ -21832,15 +21832,15 @@
 
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'soundboard-container' },
+	        { className: 'container soundboard-container' },
 	        _react2.default.createElement('audio', { id: 'soundboardFile', src: 'http://morahman.co.uk/audio/abc.mp3', type: 'audio/mp3' }),
 	        _react2.default.createElement(
-	          'ul',
-	          null,
+	          'div',
+	          { className: 'row' },
 	          this.soundClipsArr.map(function (soundClip, i) {
 	            return _react2.default.createElement(
-	              'li',
-	              { key: i },
+	              'div',
+	              { className: 'col-xs-4 col-sm-3 col-md-1 sound-unit', key: i },
 	              _react2.default.createElement(
 	                'a',
 	                { onClick: that.playSegment.bind(that, soundClip.startTime, soundClip.endTime) },

@@ -21,7 +21,7 @@ class MainMenu extends React.Component {
       <ul className='main-menu {(appState)}'>
         {
           this.menuData.map(function(val, i) {
-            return <MenuItem menuSelectHandler={that.props.menuStatusChanger} menuItemName={val.name} key={i} />
+            return <MenuItem menuSelectHandler={that.props.appStatusChanger} menuItemName={val.name} key={i} />
           })
         }
       </ul>
