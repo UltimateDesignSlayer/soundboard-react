@@ -21592,7 +21592,8 @@
 	    var _this = _possibleConstructorReturn(this, (Body.__proto__ || Object.getPrototypeOf(Body)).call(this));
 
 	    _this.state = {
-	      displayStatus: 'mainMenu'
+	      displayStatus: 'mainMenu',
+	      soundboardId: ''
 	    };
 
 	    _this.changeAppState = _this.changeAppState.bind(_this);
@@ -21601,10 +21602,11 @@
 
 	  _createClass(Body, [{
 	    key: 'changeAppState',
-	    value: function changeAppState(status) {
-	      console.log(status);
+	    value: function changeAppState(statusObj) {
+	      console.log(statusObj.soundboardId);
 	      this.setState({
-	        displayStatus: status
+	        displayStatus: statusObj.appState,
+	        soundboardId: statusObj.soundboardId
 	      });
 	      // () => console.log(this.state.displayStatus);
 	    }
@@ -21612,11 +21614,11 @@
 	    key: 'render',
 	    value: function render() {
 	      var appStateRender;
-	      console.log('display menu', this.displayMenu);
+
 	      if (this.state.displayStatus === 'mainMenu') {
 	        appStateRender = _react2.default.createElement(_mainMenu.MainMenu, { appStatusChanger: this.changeAppState });
 	      } else {
-	        appStateRender = _react2.default.createElement(_soundboard.Soundboard, null);
+	        appStateRender = _react2.default.createElement(_soundboard.Soundboard, { appStatusChanger: this.changeAppState, soundboardId: this.state.soundboardId });
 	      }
 
 	      return _react2.default.createElement(
@@ -21668,7 +21670,7 @@
 	    //Get this data form some other source. Keep here for now...
 	    var _this = _possibleConstructorReturn(this, (MainMenu.__proto__ || Object.getPrototypeOf(MainMenu)).call(this, props));
 
-	    _this.menuData = [{ name: 'test' }, { name: 'abc' }, { name: '123' }];
+	    _this.menuData = [{ name: 'Alphabet', id: 'alphabet' }, { name: 'Numbers', id: 'numbers' }, { name: 'Another thing', id: 'another-thing' }];
 	    return _this;
 	  }
 
@@ -21681,7 +21683,7 @@
 	        'ul',
 	        { className: 'main-menu {(appState)}' },
 	        this.menuData.map(function (val, i) {
-	          return _react2.default.createElement(_menuItem.MenuItem, { menuSelectHandler: that.props.appStatusChanger, menuItemName: val.name, key: i });
+	          return _react2.default.createElement(_menuItem.MenuItem, { menuSelectHandler: that.props.appStatusChanger, menuItemId: val.id, menuItemName: val.name, key: i });
 	        })
 	      );
 	    }
@@ -21729,7 +21731,12 @@
 	  _createClass(MenuItem, [{
 	    key: 'menuItemSelect',
 	    value: function menuItemSelect(e) {
-	      this.props.menuSelectHandler('soundboard');
+	      var itemStateObj = {
+	        appState: 'soundboard',
+	        soundboardId: this.props.menuItemId
+	      };
+
+	      this.props.menuSelectHandler(itemStateObj);
 	    }
 	  }, {
 	    key: 'render',
@@ -21775,23 +21782,45 @@
 	var Soundboard = function (_React$Component) {
 	  _inherits(Soundboard, _React$Component);
 
-	  function Soundboard() {
+	  function Soundboard(props) {
 	    _classCallCheck(this, Soundboard);
 
-	    // The data below will ideally be set up with a global state.
-	    // For example the Alphabet sound board will have data to specify the file path to the audio file
-	    // and the data of segments to play. (e.g. 'A' sound clip is between 0:01 and 0:04, 'B' is between
-	    // 0:05 and 0:08 etc.).
+	    var _this = _possibleConstructorReturn(this, (Soundboard.__proto__ || Object.getPrototypeOf(Soundboard)).call(this, props));
 
-	    var _this = _possibleConstructorReturn(this, (Soundboard.__proto__ || Object.getPrototypeOf(Soundboard)).call(this));
+	    _this.state = {
+	      soundClipsArr: [],
+	      filePath: ''
+	    };
 
-	    _this.soundClipsArr = [{ name: 'A', startTime: 0, endTime: 0.9 }, { name: 'B', startTime: 1, endTime: 1.9 }, { name: 'C', startTime: 2, endTime: 3 }, { name: 'D', startTime: 3.1, endTime: 4 }, { name: 'E', startTime: 4.1, endTime: 5.1 }, { name: 'F', startTime: 5.2, endTime: 6.2 }, { name: 'G', startTime: 6.35, endTime: 7.2 }, { name: 'H', startTime: 7.3, endTime: 8.225 }, { name: 'I', startTime: 8.5, endTime: 9.3 }, { name: 'J', startTime: 9.4, endTime: 10.4 }, { name: 'K', startTime: 10.6, endTime: 11.4 }, { name: 'L', startTime: 11.8, endTime: 12.7 }, { name: 'M', startTime: 12.9, endTime: 13.9 }, { name: 'N', startTime: 14.2, endTime: 15.1 }, { name: 'O', startTime: 15.2, endTime: 16.2 }, { name: 'P', startTime: 16.4, endTime: 17.5 }, { name: 'Q', startTime: 17.7, endTime: 18.7 }, { name: 'R', startTime: 18.9, endTime: 20 }, { name: 'S', startTime: 20.2, endTime: 21.1 }, { name: 'T', startTime: 21.3, endTime: 22.3 }, { name: 'U', startTime: 22.55, endTime: 23.4 }, { name: 'V', startTime: 23.4, endTime: 11.4 }, { name: 'W', startTime: 10.6, endTime: 11.4 }, { name: 'X', startTime: 10.6, endTime: 11.4 }, { name: 'Y', startTime: 10.6, endTime: 11.4 }, { name: 'Z', startTime: 10.6, endTime: 11.4 }];
-
-	    _this.filePath = 'http://morahman.co.uk/audio/abc.mp3';
+	    _this.getSoundboard();
 	    return _this;
 	  }
 
 	  _createClass(Soundboard, [{
+	    key: 'getSoundboard',
+	    value: function getSoundboard() {
+	      // The data below will ideally be set up with a global state.
+	      // For example the Alphabet soundboard will have data to specify the file path to the audio file
+	      // and the data of segments to play. (e.g. 'A' sound clip is between 0:01 and 0:04, 'B' is between
+	      // 0:05 and 0:08 etc.).
+	      var that = this;
+	      var soundboardFile = '';
+	      var soundboardData = [];
+
+	      $.ajax({
+	        url: '/data/' + this.props.soundboardId + '.json',
+	        method: 'GET',
+	        success: function success(data) {
+	          var d = JSON.parse(data);
+
+	          that.setState({
+	            soundClipsArr: d[1],
+	            filePath: d[0].soundFilePath
+	          });
+	        }
+	      });
+	    }
+	  }, {
 	    key: 'componentDidMount',
 	    value: function componentDidMount() {
 	      var that = this;
@@ -21809,20 +21838,24 @@
 	      console.log(this.audioElem.src);
 	    }
 	  }, {
-	    key: 'getSoundboardAudio',
-	    value: function getSoundboardAudio(filepath) {}
-	  }, {
-	    key: 'audioTimeUpdateHandler',
-	    value: function audioTimeUpdateHandler() {}
-	  }, {
-	    key: 'bindEvents',
-	    value: function bindEvents() {}
-	  }, {
 	    key: 'playSegment',
 	    value: function playSegment(startTime, endTime) {
 	      this.audioSpriteEnd = endTime;
 	      this.audioElem.currentTime = startTime;
 	      this.audioElem.play();
+	    }
+
+	    //Go back to main menu
+
+	  }, {
+	    key: 'changeAppState',
+	    value: function changeAppState() {
+	      var itemStateObj = {
+	        appState: 'mainMenu',
+	        soundboardId: ''
+	      };
+
+	      this.props.appStatusChanger(itemStateObj);
 	    }
 	  }, {
 	    key: 'render',
@@ -21836,11 +21869,11 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: 'container soundboard-container' },
-	        _react2.default.createElement('audio', { id: 'soundboardFile', src: 'http://morahman.co.uk/audio/abc.mp3', type: 'audio/mp3' }),
+	        _react2.default.createElement('audio', { id: 'soundboardFile', src: this.state.filePath, type: 'audio/mp3' }),
 	        _react2.default.createElement(
 	          'div',
 	          { className: 'row' },
-	          this.soundClipsArr.map(function (soundClip, i) {
+	          this.state.soundClipsArr.map(function (soundClip, i) {
 	            return _react2.default.createElement(
 	              'div',
 	              { className: 'col-xs-4 col-sm-3 col-md-1 sound-unit', key: i },
@@ -21854,7 +21887,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'a',
-	          { className: 'btn btn-default' },
+	          { className: 'btn btn-default', onClick: this.changeAppState.bind(this) },
 	          _react2.default.createElement('span', { className: 'glyphicon glyphicon-chevron-left' })
 	        )
 	      );

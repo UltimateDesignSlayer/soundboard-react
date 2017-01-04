@@ -8,28 +8,29 @@ class Body extends React.Component {
     super();
 
     this.state = {
-      displayStatus: 'mainMenu'
+      displayStatus: 'mainMenu',
+      soundboardId: ''
     };
 
     this.changeAppState = this.changeAppState.bind(this);
   }
 
-  changeAppState(status) {
-    console.log(status);
+  changeAppState(statusObj) {
+    console.log(statusObj.soundboardId);
     this.setState({
-      displayStatus: status
+      displayStatus: statusObj.appState,
+      soundboardId: statusObj.soundboardId
     });
     // () => console.log(this.state.displayStatus);
-
   }
 
   render() {
     var appStateRender;
-    console.log('display menu',this.displayMenu);
+
     if (this.state.displayStatus === 'mainMenu') {
       appStateRender = <MainMenu appStatusChanger={this.changeAppState} />;
     } else {
-      appStateRender = <Soundboard />;
+      appStateRender = <Soundboard appStatusChanger={this.changeAppState} soundboardId={this.state.soundboardId} />;
     }
 
     return (

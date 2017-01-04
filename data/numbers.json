@@ -1,0 +1,17 @@
+[
+  {
+    "soundFilePath": "http://morahman.co.uk/audio/nums.mp3"
+  },
+  [
+    {"name": "1", "startTime": 0, "endTime": 0.9},
+    {"name": "2", "startTime": 1, "endTime": 1.9},
+    {"name": "3", "startTime": 2, "endTime": 3},
+    {"name": "4", "startTime": 3.1, "endTime": 4},
+    {"name": "5", "startTime": 4.1, "endTime": 5.1},
+    {"name": "6", "startTime": 5.2, "endTime": 6.2},
+    {"name": "7", "startTime": 6.35, "endTime": 7.2},
+    {"name": "8", "startTime": 7.3, "endTime": 8.225},
+    {"name": "9", "startTime": 8.5, "endTime": 9.3},
+    {"name": "10", "startTime": 9.4, "endTime": 10.4}
+  ]
+]
