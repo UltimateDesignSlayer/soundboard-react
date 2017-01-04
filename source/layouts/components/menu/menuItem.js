@@ -8,9 +8,10 @@ class MenuItem extends React.Component {
   menuItemSelect(e) {
     var itemStateObj = {
       appState: 'soundboard',
-      soundboardId: this.props.menuItemId
+      soundboardId: this.props.menuItemId,
+      soundboardHeading: this.props.menuItemName
     }
-    
+
     this.props.menuSelectHandler(itemStateObj);
   }
 

@@ -6,31 +6,15 @@ import {Soundboard} from './soundboard/soundboard';
 class Body extends React.Component {
   constructor() {
     super();
-
-    this.state = {
-      displayStatus: 'mainMenu',
-      soundboardId: ''
-    };
-
-    this.changeAppState = this.changeAppState.bind(this);
-  }
-
-  changeAppState(statusObj) {
-    console.log(statusObj.soundboardId);
-    this.setState({
-      displayStatus: statusObj.appState,
-      soundboardId: statusObj.soundboardId
-    });
-    // () => console.log(this.state.displayStatus);
   }
 
   render() {
     var appStateRender;
 
-    if (this.state.displayStatus === 'mainMenu') {
-      appStateRender = <MainMenu appStatusChanger={this.changeAppState} />;
+    if (this.props.appState === 'mainMenu') {
+      appStateRender = <MainMenu appStatusChanger={this.props.appStatusChanger} />;
     } else {
-      appStateRender = <Soundboard appStatusChanger={this.changeAppState} soundboardId={this.state.soundboardId} />;
+      appStateRender = <Soundboard appStatusChanger={this.props.appStatusChanger} soundboardId={this.props.soundboardId} />;
     }
 
     return (

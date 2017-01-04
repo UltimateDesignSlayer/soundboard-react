@@ -62,7 +62,8 @@ class Soundboard extends React.Component {
   changeAppState() {
     var itemStateObj = {
       appState: 'mainMenu',
-      soundboardId: ''
+      soundboardId: 'default',
+      soundboardHeading: 'Soundboard!'
     }
 
     this.props.appStatusChanger(itemStateObj);

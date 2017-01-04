@@ -21511,29 +21511,26 @@
 
 	    var _this = _possibleConstructorReturn(this, (Layout.__proto__ || Object.getPrototypeOf(Layout)).call(this, props));
 
-	    console.log(_this.props.headerText);
-
-	    // This is how we set initial state in this ES6 class model.
-	    // Replaces using getInitialState().g
 	    _this.state = {
-	      headerText: _this.props.headerText,
-	      themeClass: 'theme-' + _this.props.appState
+	      appState: 'mainMenu',
+	      soundboardId: '',
+	      soundboardHeading: 'Soundboard!',
+	      themeClass: 'theme-default'
 	    };
+
+	    _this.changeAppState = _this.changeAppState.bind(_this);
 	    return _this;
 	  }
 
 	  _createClass(Layout, [{
-	    key: 'changeThemeState',
-	    value: function changeThemeState(themeClassName) {
+	    key: 'changeAppState',
+	    value: function changeAppState(statusObj) {
+	      console.log(statusObj.soundboardId);
 	      this.setState({
-	        themeClass: themeClassName
-	      });
-	    }
-	  }, {
-	    key: 'changeHeaderText',
-	    value: function changeHeaderText(text) {
-	      this.setState({
-	        headerText: text
+	        appState: statusObj.appState,
+	        soundboardId: statusObj.soundboardId,
+	        soundboardHeading: statusObj.soundboardHeading,
+	        themeClass: 'theme-' + statusObj.soundboardId
 	      });
 	    }
 	  }, {
@@ -21542,8 +21539,8 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: this.state.themeClass },
-	        _react2.default.createElement(_header.Header, { changeHeaderText: this.changeHeaderText.bind(this), changeTheme: this.changeThemeState.bind(this), headerText: this.state.headerText }),
-	        _react2.default.createElement(_body.Body, null),
+	        _react2.default.createElement(_header.Header, { headerText: this.state.soundboardHeading }),
+	        _react2.default.createElement(_body.Body, { appStatusChanger: this.changeAppState, soundboardId: this.state.soundboardId, appState: this.state.appState }),
 	        _react2.default.createElement(_footer.Footer, null)
 	      );
 	    }
@@ -21589,36 +21586,18 @@
 	  function Body() {
 	    _classCallCheck(this, Body);
 
-	    var _this = _possibleConstructorReturn(this, (Body.__proto__ || Object.getPrototypeOf(Body)).call(this));
-
-	    _this.state = {
-	      displayStatus: 'mainMenu',
-	      soundboardId: ''
-	    };
-
-	    _this.changeAppState = _this.changeAppState.bind(_this);
-	    return _this;
+	    return _possibleConstructorReturn(this, (Body.__proto__ || Object.getPrototypeOf(Body)).call(this));
 	  }
 
 	  _createClass(Body, [{
-	    key: 'changeAppState',
-	    value: function changeAppState(statusObj) {
-	      console.log(statusObj.soundboardId);
-	      this.setState({
-	        displayStatus: statusObj.appState,
-	        soundboardId: statusObj.soundboardId
-	      });
-	      // () => console.log(this.state.displayStatus);
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      var appStateRender;
 
-	      if (this.state.displayStatus === 'mainMenu') {
-	        appStateRender = _react2.default.createElement(_mainMenu.MainMenu, { appStatusChanger: this.changeAppState });
+	      if (this.props.appState === 'mainMenu') {
+	        appStateRender = _react2.default.createElement(_mainMenu.MainMenu, { appStatusChanger: this.props.appStatusChanger });
 	      } else {
-	        appStateRender = _react2.default.createElement(_soundboard.Soundboard, { appStatusChanger: this.changeAppState, soundboardId: this.state.soundboardId });
+	        appStateRender = _react2.default.createElement(_soundboard.Soundboard, { appStatusChanger: this.props.appStatusChanger, soundboardId: this.props.soundboardId });
 	      }
 
 	      return _react2.default.createElement(
@@ -21733,7 +21712,8 @@
 	    value: function menuItemSelect(e) {
 	      var itemStateObj = {
 	        appState: 'soundboard',
-	        soundboardId: this.props.menuItemId
+	        soundboardId: this.props.menuItemId,
+	        soundboardHeading: this.props.menuItemName
 	      };
 
 	      this.props.menuSelectHandler(itemStateObj);
@@ -21852,7 +21832,8 @@
 	    value: function changeAppState() {
 	      var itemStateObj = {
 	        appState: 'mainMenu',
-	        soundboardId: ''
+	        soundboardId: 'default',
+	        soundboardHeading: 'Soundboard!'
 	      };
 
 	      this.props.appStatusChanger(itemStateObj);
@@ -21980,13 +21961,6 @@
 	  }
 
 	  _createClass(Header, [{
-	    key: 'changeTheme',
-	    value: function changeTheme(e) {
-	      console.log(e);
-	      this.props.changeTheme('theme-super-why');
-	      this.props.changeHeaderText('super why');
-	    }
-	  }, {
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
@@ -21996,11 +21970,6 @@
 	          'h1',
 	          null,
 	          this.props.headerText
-	        ),
-	        _react2.default.createElement(
-	          'button',
-	          { onClick: this.changeTheme.bind(this) },
-	          'Super why'
 	        )
 	      );
 	    }

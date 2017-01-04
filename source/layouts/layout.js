@@ -8,33 +8,31 @@ class Layout extends React.Component {
   constructor(props) {
     super(props);
 
-    console.log(this.props.headerText);
-
-    // This is how we set initial state in this ES6 class model.
-    // Replaces using getInitialState().g
     this.state = {
-      headerText: this.props.headerText,
-      themeClass: 'theme-' + this.props.appState
+      appState: 'mainMenu',
+      soundboardId: '',
+      soundboardHeading: 'Soundboard!',
+      themeClass: 'theme-default'
     };
+
+    this.changeAppState = this.changeAppState.bind(this);
   }
 
-  changeThemeState(themeClassName) {
+  changeAppState(statusObj) {
+    console.log(statusObj.soundboardId);
     this.setState({
-      themeClass: themeClassName
-    });
-  }
-
-  changeHeaderText(text) {
-    this.setState({
-      headerText: text
+      appState: statusObj.appState,
+      soundboardId: statusObj.soundboardId,
+      soundboardHeading: statusObj.soundboardHeading,
+      themeClass: 'theme-' + statusObj.soundboardId
     });
   }
 
   render() {
     return (
       <div className={this.state.themeClass}>
-        <Header changeHeaderText={this.changeHeaderText.bind(this)} changeTheme={this.changeThemeState.bind(this)} headerText={this.state.headerText} />
-        <Body />
+        <Header headerText={this.state.soundboardHeading} />
+        <Body appStatusChanger={this.changeAppState} soundboardId={this.state.soundboardId} appState={this.state.appState} />
         <Footer />
       </div>
     );
