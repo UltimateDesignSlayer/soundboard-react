@@ -12,7 +12,7 @@ class MenuItem extends React.Component {
       soundboardHeading: this.props.menuItemName
     }
 
-    this.props.menuSelectHandler(itemStateObj);
+    this.props.menuSelectHandler(itemStateObj); 
   }
 
   render() {
