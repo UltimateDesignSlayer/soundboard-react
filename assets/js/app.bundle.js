@@ -101,6 +101,8 @@
 
 	_reactDom2.default.render(_react2.default.createElement(App, null), appContainer);
 
+	__webpack_require__(179);
+
 /***/ },
 /* 1 */
 /***/ function(module, exports, __webpack_require__) {
@@ -21979,6 +21981,12 @@
 	}(_react2.default.Component);
 
 	exports.Header = Header;
+
+/***/ },
+/* 179 */
+/***/ function(module, exports) {
+
+	// removed by extract-text-webpack-plugin
 
 /***/ }
 /******/ ]);

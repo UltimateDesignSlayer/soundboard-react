@@ -30,3 +30,6 @@ class App extends React.Component {
 }
 
 ReactDOM.render(<App />, appContainer);
+
+
+require('../css/sass/_style.scss');

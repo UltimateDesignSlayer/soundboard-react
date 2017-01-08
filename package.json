@@ -7,7 +7,7 @@
     "test": "echo \"Error: no tests specified\" && exit 1",
     "start": "node server.js",
     "webpack-watch": "webpack --watch",
-    "devel": "npm start && npm run webpack-watch && echo \"Webpack server running on http://localhost:8080/webpack-dev-server/.\" && echo \"Plain Node server on http://localhost:1234.\""
+    "devel": "npm start && npm run webpack-watch && echo \"Plain Node server on http://localhost:1234.\""
   },
   "repository": {
     "type": "git",
@@ -28,8 +28,11 @@
     "babel-loader": "^6.2.5",
     "babel-preset-es2015": "^6.14.0",
     "babel-preset-react": "^6.11.1",
+    "css-loader": "^0.26.1",
+    "extract-text-webpack-plugin": "^1.0.1",
     "node-sass": "^4.1.1",
     "sass-loader": "^4.1.1",
+    "style-loader": "^0.13.1",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2"
   }
