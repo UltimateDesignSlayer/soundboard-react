@@ -31,9 +31,13 @@ class Layout extends React.Component {
   render() {
     return (
       <div className={this.state.themeClass}>
-        <Header headerText={this.state.soundboardHeading} />
-        <Body appStatusChanger={this.changeAppState} soundboardId={this.state.soundboardId} appState={this.state.appState} />
-        <Footer />
+        <div className="container top-container">
+          <div className="row">
+            <Header headerText={this.state.soundboardHeading} />
+            <Body appStatusChanger={this.changeAppState} soundboardId={this.state.soundboardId} appState={this.state.appState} />
+            <Footer />
+          </div>
+        </div>
       </div>
     );
   }

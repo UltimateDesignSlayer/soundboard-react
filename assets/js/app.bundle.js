@@ -21541,9 +21541,17 @@
 	      return _react2.default.createElement(
 	        'div',
 	        { className: this.state.themeClass },
-	        _react2.default.createElement(_header.Header, { headerText: this.state.soundboardHeading }),
-	        _react2.default.createElement(_body.Body, { appStatusChanger: this.changeAppState, soundboardId: this.state.soundboardId, appState: this.state.appState }),
-	        _react2.default.createElement(_footer.Footer, null)
+	        _react2.default.createElement(
+	          'div',
+	          { className: 'container top-container' },
+	          _react2.default.createElement(
+	            'div',
+	            { className: 'row' },
+	            _react2.default.createElement(_header.Header, { headerText: this.state.soundboardHeading }),
+	            _react2.default.createElement(_body.Body, { appStatusChanger: this.changeAppState, soundboardId: this.state.soundboardId, appState: this.state.appState }),
+	            _react2.default.createElement(_footer.Footer, null)
+	          )
+	        )
 	      );
 	    }
 	  }]);
@@ -21604,7 +21612,7 @@
 
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'main' },
+	        { className: 'main col-xs-12' },
 	        appStateRender
 	      );
 	    }
@@ -21790,7 +21798,7 @@
 	      var soundboardData = [];
 
 	      $.ajax({
-	        url: '/data/' + this.props.soundboardId + '.json',
+	        url: '/assets/data/' + this.props.soundboardId + '.json',
 	        method: 'GET',
 	        success: function success(data) {
 	          var d = JSON.parse(data);
@@ -21851,7 +21859,7 @@
 
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'container soundboard-container' },
+	        { className: 'soundboard-container' },
 	        _react2.default.createElement('audio', { id: 'soundboardFile', src: this.state.filePath, type: 'audio/mp3' }),
 	        _react2.default.createElement(
 	          'div',

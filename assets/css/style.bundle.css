@@ -8,3 +8,16 @@
   padding: 10px 0;
   text-align: center;
   cursor: pointer; }
+
+header {
+  padding-bottom: 15px;
+  padding-top: 15px; }
+  header h1, header h2, header h3, header h4, header h5, header h5 {
+    margin-top: 0;
+    margin-bottom: 0; }
+
+.theme-alphabet {
+  background: skyblue; }
+
+.top-container {
+  height: 100vh; }

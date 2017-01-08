@@ -18,7 +18,7 @@ class Body extends React.Component {
     }
 
     return (
-      <div className='main'>
+      <div className='main col-xs-12'>
         {appStateRender}
       </div>
     );

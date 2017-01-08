@@ -22,7 +22,7 @@ class Soundboard extends React.Component {
     var soundboardData = [];
 
     $.ajax({
-      url: '/data/' + this.props.soundboardId + '.json',
+      url: '/assets/data/' + this.props.soundboardId + '.json',
       method: 'GET',
       success: function(data){
         var d = JSON.parse(data);
@@ -33,7 +33,6 @@ class Soundboard extends React.Component {
         });
       }
     });
-
   }
 
   componentDidMount() {
@@ -77,7 +76,7 @@ class Soundboard extends React.Component {
     // I click play, the abc.wav file is loaded in again by the browser.
 
     return (
-      <div className='container soundboard-container'>
+      <div className='soundboard-container'>
         <audio id="soundboardFile" src={ this.state.filePath } type="audio/mp3"></audio>
 
         <div className="row">
