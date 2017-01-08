@@ -21798,10 +21798,10 @@
 	      var soundboardData = [];
 
 	      $.ajax({
-	        url: '/assets/data/' + this.props.soundboardId + '.json',
+	        url: '/data/' + this.props.soundboardId + '.json',
 	        method: 'GET',
 	        success: function success(data) {
-	          var d = JSON.parse(data);
+	          var d = data; //Does this need to be JSON.parse'd??
 
 	          that.setState({
 	            soundClipsArr: d[1],

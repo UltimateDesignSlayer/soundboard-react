@@ -1,36 +1,13 @@
-/**
- * Fire up Node server.
- * We're matching up the URL to the html file name. Not using Express at all,
- * just keeping it simple.
- */
-var http = require('http');
-var url = require('url');
-var fs = require('fs');
-var events = require('events');
-var ee = new events.EventEmitter();
+var express = require('express')
+var app = express()
+var path = require('path');
 
-var port = 1234;
+app.get('/', function(req, res) {
+    res.sendFile(path.join(__dirname + '/index.html'));
+});
 
-http.createServer(function(request, response){
-  var urlPath = url.parse(request.url).pathname;
+app.use(express.static('assets')); //All static files in here.
 
-  console.log('Path requested :: ' + urlPath);
-
-  if(urlPath === '/'){
-		urlPath = '/index.html';
-	}
-
-  fs.readFile(urlPath.substr(1), function(error, fileData){
-    if (error){
-      console.log('File not found :: ', error.stack);
-    }
-    else{
-      response.writeHead(200); //Repond with OK
-      response.write(fileData.toString());
-    }
-
-    response.end();
-
-  });
-
-}).listen(port);
+app.listen(1234, function () {
+  console.log('App is on port 1234. (localhost:1234)')
+})
