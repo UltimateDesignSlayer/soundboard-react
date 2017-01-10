@@ -12,14 +12,14 @@ class MenuItem extends React.Component {
       soundboardHeading: this.props.menuItemName
     }
 
-    this.props.menuSelectHandler(itemStateObj); 
+    this.props.menuSelectHandler(itemStateObj);
   }
 
   render() {
     return(
-      <li onClick={ this.menuItemSelect.bind(this) }>
+      <div className="col-xs-3 menu-item" onClick={ this.menuItemSelect.bind(this) }>
         { this.props.menuItemName }
-      </li>
+      </div>
     );
   }
 }

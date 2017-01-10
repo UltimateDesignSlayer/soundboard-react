@@ -1,0 +1,12 @@
+.main-menu {
+  font-family: $font-comfortaa;
+
+  .menu-item {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid $pale-purple;
+    font-weight: bold;
+    color: $purple;
+    cursor: pointer;
+  }
+}

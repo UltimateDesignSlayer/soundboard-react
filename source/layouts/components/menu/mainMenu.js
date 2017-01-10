@@ -10,7 +10,8 @@ class MainMenu extends React.Component {
     this.menuData = [
       {name: 'Alphabet', id: 'alphabet'},
       {name: 'Numbers', id: 'numbers'},
-      {name: 'Another thing', id: 'another-thing'}
+      {name: 'Jungle Animals', id: 'jungle-animals'},
+      {name: 'Farm Animals', id: 'farm-animals'}
     ];
   }
 
@@ -18,13 +19,13 @@ class MainMenu extends React.Component {
     var that = this;
 
     return (
-      <ul className='main-menu {(appState)}'>
+      <div className='main-menu row {(appState)}'>
         {
           this.menuData.map(function(val, i) {
             return <MenuItem menuSelectHandler={that.props.appStatusChanger} menuItemId={val.id} menuItemName={val.name} key={i} />
           })
         }
-      </ul>
+      </div>
     );
   }
 }

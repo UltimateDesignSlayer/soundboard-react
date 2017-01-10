@@ -1,3 +1,9 @@
+@font-face {
+  font-family: 'comfortaaregular';
+  src: url("/fonts/Comfortaa-Regular.ttf") format("ttf"), url("/fonts/comfortaa-regular-webfont.woff2") format("woff2"), url("/fonts/comfortaa-regular-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
+
 .sound-unit {
   border: 1px dashed blue;
   padding-left: 0;
@@ -14,10 +20,22 @@ header {
   padding-top: 15px; }
   header h1, header h2, header h3, header h4, header h5, header h5 {
     margin-top: 0;
-    margin-bottom: 0; }
+    margin-bottom: 0;
+    font-family: "comfortaaregular"; }
 
 .theme-alphabet {
-  background: skyblue; }
+  background: yellow;
+  font-family: "comfortaaregular"; }
 
 .top-container {
   height: 100vh; }
+
+.main-menu {
+  font-family: "comfortaaregular"; }
+  .main-menu .menu-item {
+    text-align: center;
+    padding: 10px;
+    border: 1px solid #9371AA;
+    font-weight: bold;
+    color: #552972;
+    cursor: pointer; }

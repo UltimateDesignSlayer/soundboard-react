@@ -21659,7 +21659,7 @@
 	    //Get this data form some other source. Keep here for now...
 	    var _this = _possibleConstructorReturn(this, (MainMenu.__proto__ || Object.getPrototypeOf(MainMenu)).call(this, props));
 
-	    _this.menuData = [{ name: 'Alphabet', id: 'alphabet' }, { name: 'Numbers', id: 'numbers' }, { name: 'Another thing', id: 'another-thing' }];
+	    _this.menuData = [{ name: 'Alphabet', id: 'alphabet' }, { name: 'Numbers', id: 'numbers' }, { name: 'Jungle Animals', id: 'jungle-animals' }, { name: 'Farm Animals', id: 'farm-animals' }];
 	    return _this;
 	  }
 
@@ -21669,8 +21669,8 @@
 	      var that = this;
 
 	      return _react2.default.createElement(
-	        'ul',
-	        { className: 'main-menu {(appState)}' },
+	        'div',
+	        { className: 'main-menu row {(appState)}' },
 	        this.menuData.map(function (val, i) {
 	          return _react2.default.createElement(_menuItem.MenuItem, { menuSelectHandler: that.props.appStatusChanger, menuItemId: val.id, menuItemName: val.name, key: i });
 	        })
@@ -21732,8 +21732,8 @@
 	    key: 'render',
 	    value: function render() {
 	      return _react2.default.createElement(
-	        'li',
-	        { onClick: this.menuItemSelect.bind(this) },
+	        'div',
+	        { className: 'col-xs-3 menu-item', onClick: this.menuItemSelect.bind(this) },
 	        this.props.menuItemName
 	      );
 	    }
