@@ -7,4 +7,24 @@
     font-style: normal;
 }
 
+@font-face {
+    font-family: 'magimtos';
+    src: url('/fonts/MAGIMTOS.ttf') format('ttf'),
+        url('/fonts/magimtos-webfont.woff2') format('woff2'),
+        url('/fonts/magimtos-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'magimtfilled';
+    src: url('/fonts/MAGIMT__.ttf') format('ttf'),
+        url('/fonts/magimt__-webfont.woff2') format('woff2'),
+        url('/fonts/magimt__-webfont.woff') format('woff');
+    font-weight: normal;
+    font-style: normal;
+}
+
 $font-comfortaa: 'comfortaaregular';
+$font-magim: 'magimtos';
+$font-magim-filled: 'magimtfilled';

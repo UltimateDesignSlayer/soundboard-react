@@ -82,12 +82,12 @@ class Soundboard extends React.Component {
         <div className="row">
         {
           this.state.soundClipsArr.map(function(soundClip, i) {
-            return <div className="col-xs-4 col-sm-3 col-md-1 sound-unit" key={i}><a onClick={that.playSegment.bind(that, soundClip.startTime, soundClip.endTime)}>{soundClip.name}</a></div>
+            return <div className="col-xs-4 col-sm-3 col-md-2 sound-unit" key={i}><a onClick={that.playSegment.bind(that, soundClip.startTime, soundClip.endTime)}>{soundClip.name}</a></div>
           })
         }
         </div>
 
-        <a className="btn btn-default" onClick={ this.changeAppState.bind(this) }>
+        <a className="btn btn-default btn-lg" onClick={ this.changeAppState.bind(this) }>
           <span className="glyphicon glyphicon-chevron-left"></span>
         </a>
       </div>

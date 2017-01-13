@@ -21733,7 +21733,7 @@
 	    value: function render() {
 	      return _react2.default.createElement(
 	        'div',
-	        { className: 'col-xs-3 menu-item', onClick: this.menuItemSelect.bind(this) },
+	        { className: 'col-xs-6 menu-item', onClick: this.menuItemSelect.bind(this) },
 	        this.props.menuItemName
 	      );
 	    }
@@ -21867,7 +21867,7 @@
 	          this.state.soundClipsArr.map(function (soundClip, i) {
 	            return _react2.default.createElement(
 	              'div',
-	              { className: 'col-xs-4 col-sm-3 col-md-1 sound-unit', key: i },
+	              { className: 'col-xs-4 col-sm-3 col-md-2 sound-unit', key: i },
 	              _react2.default.createElement(
 	                'a',
 	                { onClick: that.playSegment.bind(that, soundClip.startTime, soundClip.endTime) },
@@ -21878,7 +21878,7 @@
 	        ),
 	        _react2.default.createElement(
 	          'a',
-	          { className: 'btn btn-default', onClick: this.changeAppState.bind(this) },
+	          { className: 'btn btn-default btn-lg', onClick: this.changeAppState.bind(this) },
 	          _react2.default.createElement('span', { className: 'glyphicon glyphicon-chevron-left' })
 	        )
 	      );

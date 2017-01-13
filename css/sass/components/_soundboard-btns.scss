@@ -1,12 +1,12 @@
 .sound-unit {
-  border: 1px dashed blue;
-  padding-left: 0;
-  padding-right: 0;
+  border: 1px solid #000;
 }
 
 .sound-unit a {
+  color: #000;
   display: block;
-  padding: 10px 0;
+  padding: 25px 0;
   text-align: center;
   cursor: pointer;
+  font-size: 20px;
 }

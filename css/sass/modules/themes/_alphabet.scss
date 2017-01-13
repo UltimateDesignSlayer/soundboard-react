@@ -1,3 +1,9 @@
 .theme-alphabet {
   @include theme-styles(yellow, $font-comfortaa);
+
+  header {
+    color: $green;
+  }
+
+  @include theme-grid($green, $green, 25px);
 }

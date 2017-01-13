@@ -17,7 +17,7 @@ class MenuItem extends React.Component {
 
   render() {
     return(
-      <div className="col-xs-3 menu-item" onClick={ this.menuItemSelect.bind(this) }>
+      <div className="col-xs-6 menu-item" onClick={ this.menuItemSelect.bind(this) }>
         { this.props.menuItemName }
       </div>
     );

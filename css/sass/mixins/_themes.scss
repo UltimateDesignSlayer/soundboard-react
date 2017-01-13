@@ -2,3 +2,19 @@
   background: $bg;
   font-family: $font;
 }
+
+@mixin theme-grid($border-colour, $font-colour, $font-size) {
+  .sound-unit {
+    border: 1px solid $border-colour;
+  }
+
+  .sound-unit a {
+    color: $font-colour;
+    display: block;
+    padding: 25px 0;
+    text-align: center;
+    cursor: pointer;
+    font-size: $font-size;
+  }
+
+}

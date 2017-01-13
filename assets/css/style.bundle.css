@@ -4,28 +4,17 @@
   font-weight: normal;
   font-style: normal; }
 
-.sound-unit {
-  border: 1px dashed blue;
-  padding-left: 0;
-  padding-right: 0; }
+@font-face {
+  font-family: 'magimtos';
+  src: url("/fonts/MAGIMTOS.ttf") format("ttf"), url("/fonts/magimtos-webfont.woff2") format("woff2"), url("/fonts/magimtos-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
 
-.sound-unit a {
-  display: block;
-  padding: 10px 0;
-  text-align: center;
-  cursor: pointer; }
-
-header {
-  padding-bottom: 15px;
-  padding-top: 15px; }
-  header h1, header h2, header h3, header h4, header h5, header h5 {
-    margin-top: 0;
-    margin-bottom: 0;
-    font-family: "comfortaaregular"; }
-
-.theme-alphabet {
-  background: yellow;
-  font-family: "comfortaaregular"; }
+@font-face {
+  font-family: 'magimtfilled';
+  src: url("/fonts/MAGIMT__.ttf") format("ttf"), url("/fonts/magimt__-webfont.woff2") format("woff2"), url("/fonts/magimt__-webfont.woff") format("woff");
+  font-weight: normal;
+  font-style: normal; }
 
 .top-container {
   height: 100vh; }
@@ -34,8 +23,46 @@ header {
   font-family: "comfortaaregular"; }
   .main-menu .menu-item {
     text-align: center;
-    padding: 10px;
+    padding: 25px;
     border: 1px solid #9371AA;
     font-weight: bold;
     color: #552972;
-    cursor: pointer; }
+    cursor: pointer;
+    font-size: 20px; }
+
+.sound-unit {
+  border: 1px solid #000; }
+
+.sound-unit a {
+  color: #000;
+  display: block;
+  padding: 25px 0;
+  text-align: center;
+  cursor: pointer;
+  font-size: 20px; }
+
+header {
+  padding-bottom: 15px;
+  padding-top: 15px; }
+  header h1, header h2, header h3, header h4, header h5, header h6 {
+    margin-top: 0;
+    margin-bottom: 0;
+    font-family: "magimtos"; }
+  header h1 {
+    font-size: 55px;
+    text-align: center; }
+
+.theme-alphabet {
+  background: yellow;
+  font-family: "comfortaaregular"; }
+  .theme-alphabet header {
+    color: #008000; }
+  .theme-alphabet .sound-unit {
+    border: 1px solid #008000; }
+  .theme-alphabet .sound-unit a {
+    color: #008000;
+    display: block;
+    padding: 25px 0;
+    text-align: center;
+    cursor: pointer;
+    font-size: 25px; }
