@@ -21877,9 +21877,14 @@
 	          })
 	        ),
 	        _react2.default.createElement(
-	          'a',
-	          { className: 'btn btn-default btn-lg', onClick: this.changeAppState.bind(this) },
-	          _react2.default.createElement('span', { className: 'glyphicon glyphicon-chevron-left' })
+	          'div',
+	          { className: 'soundboard-navigation' },
+	          _react2.default.createElement(
+	            'a',
+	            { className: 'btn btn-default btn-lg', onClick: this.changeAppState.bind(this) },
+	            _react2.default.createElement('span', { className: 'glyphicon glyphicon-chevron-left' }),
+	            ' Back'
+	          )
 	        )
 	      );
 	    }

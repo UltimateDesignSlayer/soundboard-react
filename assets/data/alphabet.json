@@ -24,10 +24,10 @@
     {"name": "S", "startTime": 20.2, "endTime": 21.1},
     {"name": "T", "startTime": 21.3, "endTime": 22.3},
     {"name": "U", "startTime": 22.55, "endTime": 23.4},
-    {"name": "V", "startTime": 23.4, "endTime": 11.4},
-    {"name": "W", "startTime": 10.6, "endTime": 11.4},
-    {"name": "X", "startTime": 10.6, "endTime": 11.4},
-    {"name": "Y", "startTime": 10.6, "endTime": 11.4},
-    {"name": "Z", "startTime": 10.6, "endTime": 11.4}
+    {"name": "V", "startTime": 24, "endTime": 24.9},
+    {"name": "W", "startTime": 25, "endTime": 26.4},
+    {"name": "X", "startTime": 26.6, "endTime": 27.7},
+    {"name": "Y", "startTime": 27.9, "endTime": 29},
+    {"name": "Z", "startTime": 29.2, "endTime": 30.1}
   ]
 ]

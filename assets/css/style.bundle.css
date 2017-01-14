@@ -41,6 +41,10 @@
   cursor: pointer;
   font-size: 20px; }
 
+.soundboard-navigation {
+  margin-top: 35px;
+  text-align: center; }
+
 header {
   padding-bottom: 15px;
   padding-top: 15px; }
@@ -54,13 +58,17 @@ header {
 
 .theme-alphabet {
   background: yellow;
-  font-family: "comfortaaregular"; }
+  font-family: "comfortaaregular";
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-image: url("/images/bg1.jpg"); }
   .theme-alphabet header {
     color: #008000; }
   .theme-alphabet .sound-unit {
-    border: 1px solid #008000; }
+    border: 1px solid #008000;
+    background-color: rgba(255, 255, 255, 0.9); }
   .theme-alphabet .sound-unit a {
-    color: #008000;
+    color: #db8e00;
     display: block;
     padding: 25px 0;
     text-align: center;

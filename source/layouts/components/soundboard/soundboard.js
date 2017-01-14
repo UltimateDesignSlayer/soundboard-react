@@ -87,9 +87,11 @@ class Soundboard extends React.Component {
         }
         </div>
 
-        <a className="btn btn-default btn-lg" onClick={ this.changeAppState.bind(this) }>
-          <span className="glyphicon glyphicon-chevron-left"></span>
-        </a>
+        <div className="soundboard-navigation">
+          <a className="btn btn-default btn-lg" onClick={ this.changeAppState.bind(this) }>
+            <span className="glyphicon glyphicon-chevron-left"></span> Back
+          </a>
+        </div>
       </div>
     );
   }

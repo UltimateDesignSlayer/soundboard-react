@@ -1,11 +1,14 @@
 @mixin theme-styles($bg, $font) {
   background: $bg;
   font-family: $font;
+  background-size: cover;
+  background-repeat: no-repeat;
 }
 
 @mixin theme-grid($border-colour, $font-colour, $font-size) {
   .sound-unit {
     border: 1px solid $border-colour;
+    background-color: rgba(255, 255, 255, 0.9)
   }
 
   .sound-unit a {

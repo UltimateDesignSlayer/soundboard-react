@@ -1,9 +1,10 @@
 .theme-alphabet {
   @include theme-styles(yellow, $font-comfortaa);
+  background-image: url('/images/bg1.jpg');
 
   header {
     color: $green;
   }
 
-  @include theme-grid($green, $green, 25px);
+  @include theme-grid($green, $dark-orange, 25px);
 }
