@@ -8,6 +8,6 @@ app.get('/', function(req, res) {
 
 app.use(express.static('assets')); //All static files in here.
 
-app.listen(1234, function () {
-  console.log('App is on port 1234. (localhost:1234)')
+app.listen(56065, function () {
+  console.log('App is on port 56065. (localhost:56065)')
 })
