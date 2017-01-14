@@ -13,7 +13,7 @@
     "type": "git",
     "url": "git+https://github.com/UltimateDesignSlayer/soundboard-react.git"
   },
-  "author": "Mo Rahman",
+  "author": "Mohammed Farhadur Rahman",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/UltimateDesignSlayer/soundboard-react/issues"
@@ -36,5 +36,8 @@
     "style-loader": "^0.13.1",
     "webpack": "^1.14.0",
     "webpack-dev-server": "^1.16.2"
+  },
+  "engines": {
+    "node": "6.9.4"
   }
 }
