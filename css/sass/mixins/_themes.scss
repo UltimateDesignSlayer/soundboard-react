@@ -9,7 +9,8 @@
 @mixin theme-grid($border-colour, $font-colour, $font-size) {
   .sound-unit {
     border: 1px solid $border-colour;
-    background-color: rgba(255, 255, 255, 0.9)
+    background-color: rgba(255, 255, 255, 0.9);
+    text-align: center;
   }
 
   .sound-unit a {
@@ -19,6 +20,9 @@
     text-align: center;
     cursor: pointer;
     font-size: $font-size;
-  }
 
+    img {
+      margin: 0 auto;
+    }
+  }
 }

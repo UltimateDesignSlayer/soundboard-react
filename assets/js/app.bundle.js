@@ -21928,7 +21928,7 @@
 	                soundButtonContent = soundClip.name;
 	                break;
 	              case 'images':
-	                soundButtonContent = _react2.default.createElement('img', { src: soundClip.base64, alt: soundClip.name });
+	                soundButtonContent = _react2.default.createElement('img', { src: soundClip.base64, className: 'img-responsive', alt: soundClip.name });
 	                break;
 	              default:
 	                soundButtonContent = soundClip.name;

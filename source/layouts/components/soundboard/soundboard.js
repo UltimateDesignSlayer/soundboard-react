@@ -89,7 +89,7 @@ class Soundboard extends React.Component {
                   soundButtonContent = soundClip.name;
                   break;
               case 'images':
-                  soundButtonContent = <img src={soundClip.base64} alt={soundClip.name} />;
+                  soundButtonContent = <img src={soundClip.base64} className="img-responsive" alt={soundClip.name} />;
                   break;
               default:
                   soundButtonContent = soundClip.name;

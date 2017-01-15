@@ -1,0 +1,14 @@
+.theme-jungle-animals {
+  @include theme-styles($light-orange, $font-comfortaa);
+  background-image: url('/images/bg2.jpg');
+
+  header {
+    color: $orange;
+    font-family: $font-magim-filled;
+  }
+
+  @include theme-grid($dark-orange, $dark-orange, 25px);
+  .sound-unit {
+    border-width: 2px;
+  }
+}
