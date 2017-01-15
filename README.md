@@ -2,8 +2,8 @@
 Soundboard written using ReactJS.
 
 ## To do
-- Styling
-  - Each soundboard will have it's own theme (i.e. colours, fonts etc.)
+- JSON data should have optional alternate sound mp3 as well, with a whole new set of startTime and endTimes. This could be used, for example, if we were to have one soundboard with 2 sets of sounds but the same buttons. E.g. Jungle Animals soundboard could have one MP3 which has the names of each animal, and another MP3 which has the animal sounds. A "switch" would be presented on the soundboard for the user to select between the two.
+
 - Need to cache soundboard JSON data so that it doesn't need to be ajax'd every time
 - Add "glow" animation to button in soundboard when clicked.
 
