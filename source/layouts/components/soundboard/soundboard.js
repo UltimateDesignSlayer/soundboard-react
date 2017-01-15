@@ -29,7 +29,8 @@ class Soundboard extends React.Component {
 
         that.setState({
           soundClipsArr: d[1],
-          filePath: d[0].soundFilePath
+          filePath: d[0].soundFilePath,
+          buttonType: d[0].soundButtonType
         });
       }
     });
@@ -82,7 +83,19 @@ class Soundboard extends React.Component {
         <div className="row">
         {
           this.state.soundClipsArr.map(function(soundClip, i) {
-            return <div className="col-xs-6 col-sm-3 col-md-2 sound-unit" key={i}><a onClick={that.playSegment.bind(that, soundClip.startTime, soundClip.endTime)}>{soundClip.name}</a></div>
+            var soundButtonContent;
+            switch (that.state.buttonType) {
+              case 'chars':
+                  soundButtonContent = soundClip.name;
+                  break;
+              case 'images':
+                  soundButtonContent = <img src={soundClip.base64} className="img-responsive" alt={soundClip.name} />;
+                  break;
+              default:
+                  soundButtonContent = soundClip.name;
+            }
+
+            return <div className="col-xs-6 col-sm-3 col-md-2 sound-unit" key={i}><a onClick={that.playSegment.bind(that, soundClip.startTime, soundClip.endTime)}>{soundButtonContent}</a></div>
           })
         }
         </div>
