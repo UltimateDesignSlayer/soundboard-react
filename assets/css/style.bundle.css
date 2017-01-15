@@ -61,7 +61,7 @@ header {
   font-family: "comfortaaregular";
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: scroll;
   background-image: url("/images/bg1.jpg"); }
   .theme-alphabet header {
     color: #008000; }

@@ -1,6 +1,7 @@
 [
   {
-    "soundFilePath": "http://morahman.co.uk/audio/nums.mp3"
+    "soundFilePath": "http://morahman.co.uk/audio/nums.mp3",
+    "soundButtonType": "chars"
   },
   [
     {"name": "1", "startTime": 0, "endTime": 0.9},

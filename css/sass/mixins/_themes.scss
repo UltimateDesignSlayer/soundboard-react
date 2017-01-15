@@ -3,7 +3,7 @@
   font-family: $font;
   background-size: cover;
   background-repeat: no-repeat;
-  background-attachment: fixed;
+  background-attachment: scroll;
 }
 
 @mixin theme-grid($border-colour, $font-colour, $font-size) {

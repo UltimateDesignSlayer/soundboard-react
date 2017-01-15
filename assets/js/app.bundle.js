@@ -21861,7 +21861,8 @@
 
 	          that.setState({
 	            soundClipsArr: d[1],
-	            filePath: d[0].soundFilePath
+	            filePath: d[0].soundFilePath,
+	            buttonType: d[0].soundButtonType
 	          });
 	        }
 	      });
@@ -21921,13 +21922,25 @@
 	          'div',
 	          { className: 'row' },
 	          this.state.soundClipsArr.map(function (soundClip, i) {
+	            var soundButtonContent;
+	            switch (that.state.buttonType) {
+	              case 'chars':
+	                soundButtonContent = soundClip.name;
+	                break;
+	              case 'images':
+	                soundButtonContent = _react2.default.createElement('img', { src: soundClip.base64, alt: soundClip.name });
+	                break;
+	              default:
+	                soundButtonContent = soundClip.name;
+	            }
+
 	            return _react2.default.createElement(
 	              'div',
 	              { className: 'col-xs-6 col-sm-3 col-md-2 sound-unit', key: i },
 	              _react2.default.createElement(
 	                'a',
 	                { onClick: that.playSegment.bind(that, soundClip.startTime, soundClip.endTime) },
-	                soundClip.name
+	                soundButtonContent
 	              )
 	            );
 	          })
