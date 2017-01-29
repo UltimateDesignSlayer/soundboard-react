@@ -1,6 +1,6 @@
 [
   {
-    "soundFilePath": "http://morahman.co.uk/audio/abc.mp3",
+    "soundFilePath": "/audio/abc.mp3",
     "soundButtonType": "chars"
   },
   [
