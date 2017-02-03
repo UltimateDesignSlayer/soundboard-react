@@ -1,4 +1,9 @@
 import React from 'react';
+import {
+  Router,
+  Route,
+  Link
+} from 'react-router';
 
 class MenuItem extends React.Component {
   constructor() {
@@ -18,7 +23,7 @@ class MenuItem extends React.Component {
   render() {
     return(
       <div className="col-xs-6 menu-item" onClick={ this.menuItemSelect.bind(this) }>
-        { this.props.menuItemName }
+        <Link to="/topics">{ this.props.menuItemName }</Link>
       </div>
     );
   }

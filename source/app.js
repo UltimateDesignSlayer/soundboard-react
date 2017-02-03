@@ -4,6 +4,7 @@ import React from 'react';
 import ReactDOM from 'react-dom';
 
 import {Layout} from './layouts/layout';
+import {Router, Route, hashHistory} from 'react-router';
 
 const appContainer = document.getElementById('appContainer');
 
