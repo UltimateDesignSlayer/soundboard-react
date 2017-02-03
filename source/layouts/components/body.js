@@ -1,5 +1,11 @@
 import React from 'react';
 
+import {
+  Router,
+  Route,
+  hashHistory,
+  Link
+} from 'react-router';
 import {MainMenu} from './menu/mainMenu';
 import {Soundboard} from './soundboard/soundboard';
 
@@ -20,6 +26,10 @@ class Body extends React.Component {
     return (
       <div className='main col-xs-12'>
         {appStateRender}
+        <Router history={hashHistory}>
+          <Route path="/" component={MainMenu}/>
+          <Route path="/topics" component={Soundboard}/>
+        </Router>
       </div>
     );
   }
