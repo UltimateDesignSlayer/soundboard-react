@@ -3,6 +3,7 @@ Soundboard written using ReactJS.
 
 ## Start up
 `npm install` - install required node packages.
+
 `npm start` - Fires up the Express server.
 
 `webpack --watch` - start webpack watcher during development.
